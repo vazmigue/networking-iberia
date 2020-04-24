@@ -1,14 +1,13 @@
 ![logo](_media/logo256.png)
 
-# ABC Workshop <small>0.1</small>
+# Networking Workshop <small>0.1</small>
 
-> A magical workshop.
+> From the basics to advanced routing topologies
 
-- Simple labs that fits all levels
 - Written with love
 
 [Get Started](init.md)
 
 <!-- background color -->
 
-![color](#ffffff)
+![color](#f8f8ff)

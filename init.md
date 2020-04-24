@@ -1,6 +1,6 @@
-# ABC Workshop
+# Networking Workshop
 
-Here enter a description and a architectural diagram of final result
+Exploring multiple AWS Networking Services in one single workshop. From VPC components to Route53 and Site-to-Site VPNs
 
-![image](_media/architecture.png)
+![image](../images/general.png)
 
