@@ -13,12 +13,9 @@ As noted earlier in the lab, this is what the VPCs look like:
 Click on the CloudFormation Launch link below that corresponds to the AWS Region in which you want to deploy the workshop.</br> 
 _Note: if you are sharing the AWS account with someone else be sure to pick different regions._
 
-   [![US East (N. Virginia)](https://samdengler.github.io/cloudformation-launch-stack-button-svg/images/us-east-1.svg)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?stackName=tgw&templateURL=https://s3.amazonaws.com/{{<codebucket>}}/1.tgw-vpcs.yaml&param_AvailabilityZoneA=us-east-1a&param_AvailabilityZoneB=us-east-1b)
-   [![US East (Ohio)](https://samdengler.github.io/cloudformation-launch-stack-button-svg/images/us-east-2.svg)](https://console.aws.amazon.com/cloudformation/home?region=us-east-2#/stacks/create/review?stackName=tgw&templateURL=https://s3.amazonaws.com/{{<codebucket>}}/1.tgw-vpcs.yaml&param_AvailabilityZoneA=us-east-2a&param_AvailabilityZoneB=us-east-2b)
-   [![US West (Oregon)](https://samdengler.github.io/cloudformation-launch-stack-button-svg/images/us-west-2.svg)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/create/review?stackName=tgw&templateURL=https://s3.amazonaws.com/{{<codebucket>}}/1.tgw-vpcs.yaml&param_AvailabilityZoneA=us-west-2a&param_AvailabilityZoneB=us-west-2b)
-   [![EU West (Ireland)](https://samdengler.github.io/cloudformation-launch-stack-button-svg/images/eu-west-1.svg)](https://console.aws.amazon.com/cloudformation/home?region=eu-west-1#/stacks/create/review?stackName=tgw&templateURL=https://s3.amazonaws.com/{{<codebucket>}}/1.tgw-vpcs.yaml&param_AvailabilityZoneA=eu-west-1a&param_AvailabilityZoneB=eu-west-1b)
-   [![EU West (Singapore)](https://samdengler.github.io/cloudformation-launch-stack-button-svg/images/ap-southeast-1.svg)](https://console.aws.amazon.com/cloudformation/home?region=ap-southeast-1#/stacks/create/review?stackName=tgw&templateURL=https://s3.amazonaws.com/{{<codebucket>}}/1.tgw-vpcs.yaml&param_AvailabilityZoneA=ap-southeast-1a&param_AvailabilityZoneB=ap-southeast-1b)
-   [![AP Northeast (Tokyo)](https://samdengler.github.io/cloudformation-launch-stack-button-svg/images/ap-northeast-1.svg)](https://console.aws.amazon.com/cloudformation/home?region=ap-northeast-1#/stacks/create/review?stackName=tgw&templateURL=https://s3.amazonaws.com/{{<codebucket>}}/1.tgw-vpcs.yaml&param_AvailabilityZoneA=ap-northeast-1a&param_AvailabilityZoneB=ap-northeast-1c)
+   [![US East (N. Virginia)](https://samdengler.github.io/cloudformation-launch-stack-button-svg/images/us-east-1.svg)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?stackName=tgw&templateURL=https://aws-iberia-networking-workshop-virginia.s3.amazonaws.com/1.tgw-vpcs.yaml&param_AvailabilityZoneA=us-east-1a&param_AvailabilityZoneB=us-east-1b)
+   [![EU West (Ireland)](https://samdengler.github.io/cloudformation-launch-stack-button-svg/images/eu-west-1.svg)](https://console.aws.amazon.com/cloudformation/home?region=eu-west-1#/stacks/create/review?stackName=tgw&templateURL=https://aws-iberia-networking-workshop.s3-eu-west-1.amazonaws.com/1.tgw-vpcs.yaml&param_AvailabilityZoneA=eu-west-1a&param_AvailabilityZoneB=eu-west-1b)
+ 
 
 1. If you are sharing the account with someone else doing the workshop, add your initals to the **Stack name**. This will make any IAM roles or other global resources unique.
 
@@ -27,6 +24,4 @@ _Note: if you are sharing the AWS account with someone else be sure to pick diff
 
 3. Wait for the Stacks to show **Create_Complete**. A couple of stacks will be deployed:
    ![Stack Complete](../images/createStack-VPCComplete.png)
-
-
 

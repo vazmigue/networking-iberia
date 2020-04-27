@@ -8,7 +8,7 @@ https://nodejs.org/en/
 ``npm i docsify-cli -g``
 
 ### Clone this repo and delete the .git foder
-``git clone https://github.com/rasensio/aws-workshop.git MY_WORKSHOP``
+``git clone https://github.com/vazmigue/networking-iberia.git MY_WORKSHOP``
 
 ### Preview your site
 Get into the root of the site and run this command to start editing and live previewing

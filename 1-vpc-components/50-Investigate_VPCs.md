@@ -40,7 +40,11 @@ We have partitioned each VPC into multiple subnets. For example, the Production 
 
    ![VPC Route Table](../images/vpc-routetable.png)
 
- <details>
+details summary::-webkit-details-marker {
+  display:none;
+}
+
+ <details> 
  <summary><p style="color:blue"><b>Lab #1 - QUESTION 1 </b><i>(Click to see the answer)</i></p>
   <b>Imagine that you spin up an EC2 instance within the subnet NP2-_your_stack_name_-Pub-A. If the instance tries to communicate with a destination in the Internet, what would happen?</b></br>
   a) The traffic would flow through the Internet Gateway as this is a Public Subnet </br>
