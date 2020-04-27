@@ -15,7 +15,7 @@ Let's illustrate how traffic would flow on both directions:</br>
 
 
 <b>On-premise -> AWS flow diagram</b></br>
-XXXFor the sake of this lab, we have deployed a Route53 Outbound Endpoint Resolver attached to the Datacenter VPC with a rule that sends certain DNS traffic to the Bind Server present within the VPC itself. The Bind Server is then configured to send this DNS traffic to the Route53 Inbound Endpoint Resolver in the DCS VPC. This Inbound Endpoint has awareness of the Private Hosted Zones within the VPC and will be able to resolve several DNS names like “np1.example.com” or “p1.example.com”
+For the sake of this lab, we have deployed a Route53 Outbound Endpoint Resolver attached to the Datacenter VPC with a rule that sends certain DNS traffic to the Bind Server present within the VPC itself. The Bind Server is then configured to send this DNS traffic to the Route53 Inbound Endpoint Resolver in the DCS VPC. This Inbound Endpoint has awareness of the Private Hosted Zones within the VPC and will be able to resolve several DNS names like “np1.example.com” or “p1.example.com”
 
 ![DNS DC to DCS](../images/dns-dc1tonp1.png)
 
