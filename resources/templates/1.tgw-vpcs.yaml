@@ -1713,6 +1713,12 @@ Outputs:
     Value: !Ref PrivateSubnetRouteTableDCS1
     Export:
       Name: !Sub "DCS1-${AWS::StackName}-PrivateRouteTable"
+   
+  ServerDCS1:
+    Description: "DCS1 EC2 IP address"
+    Value: !GetAtt ServerEc2DCS1.PrivateIp
+    Export:
+      Name: !Sub "DCS1-${AWS::StackName}-ServerIP"
 
   #NP1 Outputs
   PublicSubnetANP1:

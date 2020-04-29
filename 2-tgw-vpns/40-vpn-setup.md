@@ -49,7 +49,7 @@ In a real production environment we would setup a secondary router for redundanc
 
 1.  Now it's time to get the other end ready and apply the configuration to the Cisco router so we can bring the VPN tunnels up. We will carry out this action generating the Cisco configuration file. In order to do that, go back to the Cloud9 browser tab. Using the two VPN public tunnel endpoints ips generated from the step above, cd to tgwwalk on the Cloud9 bash console and run the bash script appending the 2 ips and the name of the configuration file:
   ```
- ./createcsr.sh. publicip1 publicip2 mycsrconfig.txt
+ ./createcsr.sh publicip1 publicip2 mycsrconfig.txt
  ```
 _Note: Make sure you put the ip address that lines up with Inside IP CIDR address 169.254.10.0/30 for ip1. This will result in a Cisco configuration file ready to be used_
 
