@@ -21,10 +21,17 @@
   - [Datacenter Router Access](2-tgw-vpns/30-dcrouter-access.md)
   - [Transit Gateway Key Definitions](2-tgw-vpns/35-tgw-definitions.md)
   - [VPN Setup](2-tgw-vpns/40-vpn-setup.md)
-  - [Additional ECMP Paths](2-tgw-vpns/50-additional-ecmp-paths.md)
+  - [(OPTIONAL) Additional ECMP Paths](2-tgw-vpns/50-additional-ecmp-paths.md)
   - [Transit Gateway Routing](2-tgw-vpns/60-tgw-routing.md)
 
 - Lab #3 - Route 53 DNS Endpoints and Internal Hosted Zones
   - [Hybrid DNS Overview](3-hybrid-dns/10-hybrid-dns-overview.md)
   - [DNS Components Deployment](3-hybrid-dns/20-dns-deployment.md)
   - [DNS Testing](3-hybrid-dns/30-dns-testing.md)
+
+- Lab #4 - VPC Endpoints for AWS Services
+  - [VPC Endpoints Overview](4-vpc-endpoints/10-vpc-endpoints-overview.md)
+  - [VPC Endpoints - Deployment](4-vpc-endpoints/20-vpc-endpoints-deployment.md)
+  - [NP2 Endpoint Testing](4-vpc-endpoints/30-vpc-endpoint-testing-np2.md)
+  - [NP1 Endpoint Testing](4-vpc-endpoints/40-vpc-endpoint-testing-np1.md)
+

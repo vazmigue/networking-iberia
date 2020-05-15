@@ -24,7 +24,7 @@ While the CloudFormation Template created attachments to the VPCs and route tabl
    - NP2-_stack_name_-Private
    - P1-_stack_name_-Private
 
-1. For the **DCS1-_stackname-Public** and **DCS1-_stackname-Private** where our NAT Gateway is, we need a special route. We already have a default route pointed to the Internet Gateway(IGW) for the public and to the Nat Gateway(NGW) for the private to get to the Internet, so we need another entry to route internally. Let’s use the rfc 1918 10.0.0.0/8 CIDR as that can only be internal and allows for future expansion without changes. The other VPC ranges 10.X.0.0/16 won’t match the Local Route already present in the Route Table (10.0.0.0/16 -> Local). So just add **10.0.0.0/8** pointing to the Transit Gateway. Follow the same steps as before for both Route tables. Be sure not to alter the 0.0.0.0/0 route pointed to the IGW org NGW for these route tables.
+1. For the **DCS1-_stackname-Public** and **DCS1-_stackname-Private** where our NAT Gateway is, we need a special route. We already have a default route pointed to the Internet Gateway(IGW) for the public and to the Nat Gateway(NGW) for the private to get to the Internet, so we need another entry to route internally. Let’s use the rfc 1918 10.0.0.0/8 CIDR as that can only be internal and allows for future expansion without changes. The other VPC ranges 10.X.0.0/16 won’t match the Local Route already present in the Route Table (10.0.0.0/16 -> Local). So just add **10.0.0.0/8** pointing to the Transit Gateway. Follow the same steps as before for both Route tables. Be sure not to alter the 0.0.0.0/0 route.
 
 1. Because the CloudFormation template already created a Security Group to allow ICMP traffic from 10.0.0.0/8, we should now be able to test pings from lots of places.
 
@@ -135,7 +135,7 @@ Let's fix the problem by using BlackHole Routes. We will explain how to add them
 
 1. At the Create route screen, for the **CIDR** enter **10.16.0.0/13** and tick the box next to **Blackhole**. This will drop any traffic destined to the Production VPCs. 
 
-   ![Blackhole route](/images/tgw-blackholeroute.png)
+   ![Blackhole route](../images/tgw-blackholeroute.png)
 
 1. Make sure to repeat the blackhole route in the **Red Route Table** by creating a blackhole route for 10.8.0.0/13.
 

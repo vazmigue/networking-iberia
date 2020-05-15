@@ -1,6 +1,12 @@
 # Site-to-site VPN between the Datacenter VPC and the Transit Gateway
 
-We will create two VPN tunnels from the Transit Gateway and connect them into a single instance of the Cisco CSR in the Datacenter VPC. This would simulate site-to-site VPNs between the AWS environment and your on-premise/HQ network.
+What are we going to do? We will create two VPN tunnels from the Transit Gateway and connect them into a single instance of the Cisco CSR in the Datacenter VPC. This would simulate site-to-site VPNs between the AWS environment and your on-premise/HQ network. We are emulating a common VPN between AWS and the typical Cisco/Juniper or any other router/firewall in your On-premise/HQ network:
+
+<p align="center">
+  <img width="340" height="581" src="../images/VPN_setup.png">
+</p>
+
+
 In a real production environment we would setup a secondary router for redundancy and for additional bandwidth. Each VPN ipsec tunnel provides up to 1.25Gbps. While using multiple ipsec tunnels we can provide additional bandwidth with the use of ECMP (Equal cost multipath), meaning that all the tunnels are equally used. On the AWS side, up to 50 parallel (ECMP) paths are supported. Many vendors support 4-8 ECMP paths, so check with your vendor in advance:
 
 1. In the AWS Management Console change to the region you are working in. This is in the upper right hand drop down menu.
@@ -11,7 +17,7 @@ In a real production environment we would setup a secondary router for redundanc
 
 1. You will see the VPC Attachments listed, but we want to add one to connect our Datacenter VPC. Click the **Create Transit Gateway Attachment** button above the list.
 
-1. Fill out the **Create Transit Gateway Attachment** form. exactly as below: (_Note: these choices will match our config of the router on the other side of the VPN tunnels_)
+1. Fill out the **Create Transit Gateway Attachment** form. Exactly as below: (_Note: these choices will match our config of the router on the other side of the VPN tunnels_)
 
   - **Transit Gateway ID** refers to the Transit Gateway device already provisioned by the Cloudformation template
   - **Attachment Type** is **VPN**
@@ -27,7 +33,7 @@ In a real production environment we would setup a secondary router for redundanc
 
 1.  While we are on the **Transit Gateway Attachments** page, lets go back to the top and give the VPN attachment a name. Scan down the **Resource type** column for the VPN Attachment. _Note: you may have to hit the refresh icon in the upper right above the table to get the new VPN to show. If you click the pencil that appears when you mouse over the **Name** column, you can enter a name. Be sure to tick the check mark to save the name._
 
-1.  From the Menu on the Left Select **Site-to-Site VPN Connections**. From the main panel, you likely will see the VPN is in State **Pending**. That's fine. Let's take a look towards the bottom, and click the **Tunnel Details** tab. Note down the two **Outside IP Address**es. We want to record them in the order of the one pairing up with the **Inside IP CIDR** range 169.254.**10**.0/30 first. _Note: You can use Cloud9 as a scratch pad, by clicking the + in the main panel and selecting **New file**. be sure to paste them in the right order!_
+1.  From the Menu on the Left Select **Site-to-Site VPN Connections**. From the main panel, you likely will see the VPN is in State **Pending**. That's fine. Let's take a look towards the bottom, and click the **Tunnel Details** tab. Note down the two **Outside IP Addresses**. We want to record them in the order of the one pairing up with the **Inside IP CIDR** range 169.254.**10**.0/30 first. _Note: You can use Cloud9 as a scratch pad, by clicking the + in the main panel and selecting **New file**. be sure to paste them in the right order!_
 
 1.  From the menu on the left, scroll down and select **Transit Gateway Attachments**. We need to verify that the attachment we created above is no longer in status **pending**. Instead it should be is state **available** like all of the VPC attachments in the list.
 
@@ -35,7 +41,7 @@ In a real production environment we would setup a secondary router for redundanc
 
 1.  From the Menu on the left select **Transit Gateway Route Tables**. From the table in the main panel select **Green Route Table**. Let’s take a look towards the bottom, and click the **Associations** tab. Associations mean that traffic coming from the outside towards the Transit gateway will use this route table. A routing lookup will take place in the TGW at this stage and the packet will be forwarded based on the information available within the “Routes” tab. _Note: An attachment can only be Associated with one route table but a route table can have multiple associations._
  Here in the **Green Route Table** there is an association already present: the **Datacenter Services VPC**. We need to create a new association for the VPN attachment previously created. Click **Create associations** in the **Associations** tab. From the drop-down list, select the VPN connection. Click **Create association**. Below is an snapshot displaying the VPN connection being associated:
-    ![Associate VPN](../images/tgw-vpnassocationspending.png)
+    ![Associate VPN](../images/tgw-vpnassocationspending_singlevpn.png)
 
 1.  While at the **Transit Gateway Route Tables**, take a look at the **Propagations** tab. These are the attachments that propagate its prefixes into the route table (take it as an import into the route table). An attachment can propagate to multiple route tables. For this lab we want the datacenter addressing (the one reachable via the VPN connections) propagated to all of the route tables so the VPCs associated with each route table can route back to the datacenter. Let’s start with the **Green Route Table**. We can see all of the VPCs are propagating their CIDR to the route table. 
     ![Associate VPN](../images/tgw_greenrt_propagations.png)
