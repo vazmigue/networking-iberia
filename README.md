@@ -1,3 +1,15 @@
+## General Instructions
+
+- Below you will find instructions about how to download and setup the workshop locally
+
+- The workshop has been deployed by the AWS Iberia Team using AWS Amplify
+
+- The AWS Iberia Team has setup specific S3 buckets for the Cloudformation templates used by the workshop (which should be the same templates present in this GitHub package)
+
+- Any new commit will trigger a new workshop version build and deployment via AWS Amplify
+
+
+
 ## Setup environment
 
 ### Install Node & NPM if you don't have it
@@ -14,6 +26,8 @@ https://nodejs.org/en/
 Get into the root of the site and run this command to start editing and live previewing
 
 ``docsify serve``
+
+
 
 ## Customize your site
 
@@ -53,6 +67,7 @@ Each section should have this format
 ### init.md
 * Change the title
 * Add a description and a architectural diagram if you want
+
 
 ## Add pages
 Your pages structure will be under ``1-getting-started`` where you will put your content for the workshop.
