@@ -35,7 +35,7 @@
 
 1. In the AWS Management Console choose **Services** then select **Route 53**.
 
-1. From the menu on the left, scroll down and select **Outbound Endpoints**. Pick the one with the larger name
+1. From the menu on the left, scroll down and select **Outbound Endpoints**. Pick the one with the name **tgw-dns-dc1outendpoint**
 
 1. This Outbound Endpoint is configured within the DataCenter VPC. Its mission is forwarding requests for the domain "example.com" to the Bind DNS server within the VPC. In a real environment with an on-premise DNS server and regular servers, DNS requests would land on the DNS server on their own so this Outbound Endpoint wouldn't be needed.
 
@@ -115,7 +115,7 @@
 
 1. In the AWS Management Console choose **Services** then select **Route 53**.
 
-1. From the menu on the left, scroll down and select **Outbound Endpoints**. Pick the one with the shorter name. If you scroll down and theck the rules, you will see 2 rules configured. The first one is the "match" in this case and it will forward the traffic to the Bind Server within the DataCenter VPC:
+1. From the menu on the left, scroll down and select **Outbound Endpoints**. Pick the one with the name **tgw-outendpoint**. If you scroll down and theck the rules, you will see 2 rules configured. The first one is the "match" in this case and it will forward the traffic to the Bind Server within the DataCenter VPC:
 
 	![DNS NP1 to DC](../images/dns_outendpoint_vpc.png)
 
