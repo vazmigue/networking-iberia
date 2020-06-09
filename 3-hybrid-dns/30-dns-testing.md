@@ -43,7 +43,7 @@
 
 	![DNS DC to DCS](../images/dns_outendpoint_dc.png)
 
-1. Moving on to the configuration in the DNS Bind Server, the CloudFormation template deployed a very simple configuration to just forward "aws.example.com" requests to the DNS Inbound Endpoints in the DataCenter Services VPC. The Bind server is also hosting the zone "example.com" itself. You can check the configuration by logging into the DNS Bind Server using **Systems ManSager** and checking the configuration file:
+1. Moving on to the configuration in the DNS Bind Server, the CloudFormation template deployed a very simple configuration to just forward "aws.example.com" requests to the DNS Inbound Endpoints in the DataCenter Services VPC. The Bind server is also hosting the zone "example.com" itself. You can check the configuration by logging into the DNS Bind Server using **Systems Manager** and checking the configuration file:
 
 	![Bind Server Config](../images/bind_server_config.png)
 
@@ -51,7 +51,7 @@
 
 	![Bind Server Config](../images/inbound_endpoint.png)
 
-1. This endpoint will receive external DNS queries and resolve them based on the Internal Hosted Zones attached to the VPC. Following the examble above, the DNS request for "np1.example.com" would be resolved as such (see the VPCs hosting this internal zone at the right):
+1. This endpoint will receive external DNS queries and resolve them based on the Private Hosted Zones attached to the VPC. Following the examble above, the DNS request for "np1.example.com" would be resolved as such (see the VPCs hosting this Private Hosted Zone at the right):
 	
 	![Private Hosted Zones](../images/private_hosted_zones.png)
 
@@ -60,7 +60,7 @@
  <summary><p style="color:blue"><b>Lab #3 - QUESTION 1 </b><i>(Click to see the answer)</i></p>
   <b>What would happen if you dissasociate the "np1.aws.example.com" hosted zone with the DCS1 VPC?</b></br>
   </summary><p>
-  The Inbound Endpoint won't be able to resolve "np1.aws.example.com" anymore as this endpoint is located within the DCS1 VPC and we have just removed the association between the hosted zone and the DCS1 VPC. As a result, we won't be able to resolve the DNS domain from our DataCenter server:<p>
+  The Inbound Endpoint won't be able to resolve "np1.aws.example.com" anymore as this endpoint is located within the DCS1 VPC and we have just removed the association between the Private Hosted Zone and the DCS1 VPC. As a result, we won't be able to resolve the DNS domain from our DataCenter server:<p>
   <img src="../images/np1_server_fail.png">
  </details>
 
@@ -78,7 +78,7 @@
 ## DNS Between VPCs and Datacenter
 
 
-1. Let's look at the Bind Server configuration again. The hosted zone "example.com" contains a domain name "test.example.com". Let's use it for our testing:
+1. Let's look at the Bind Server configuration again. The Private Hosted Zone "example.com" contains a domain name "test.example.com". Let's use it for our testing:
 
 	![Bind server config](../images/bind_server_config_2.png)
 
@@ -107,11 +107,11 @@
 	;; MSG SIZE  rcvd: 61
 	```
 
-1. _Attaching our diagram for reference again._ How is this actually working? Let's take a closer look
+1. _Attaching our diagram for reference again._ How is this actually working? Let's take a closer look:
 
 	![DNS NP1 to DC](../images/dns-np1todc.png)
 
-1. As "test.example.com" is not hosted within the Internal Hosted Zone attached to the VPC, the DNS request will land in the Outbound Endpoint
+1. As "test.example.com" is not hosted within the Private Hosted Zone attached to the VPC, the DNS request will land in the Outbound Endpoint
 
 1. In the AWS Management Console choose **Services** then select **Route 53**.
 
@@ -161,7 +161,7 @@ eb  7 11:30:50 ip-10-4-15-234 named[3689]: client 10.4.14.53#42094 (np1.aws.faro
   <b>NOTE: Please enable real-time logging in the Bind DNS server as instructed above for this question.</br>
   Log into the DataCenter server via terminal and issue a dig command for "np2.aws.example.com". Wait 15 seconds and repeat the operation. Why do you just see a single entry in the log despite issuing 2 separate DNS queries?</b></br>
   </summary><p>
-  It's all about DNS ttl. The "np2.aws.example.com" domain is hosted within an Internal Hosted Zone in Route 53. There is a 30 second TTL value defined for this domain. The Bind Server will honor that and won't send further queries for the domain until the TTL is expired.<p>
+  It's all about DNS ttl. The "np2.aws.example.com" domain is hosted within a Private Hosted Zone in Route 53. There is a 30 second TTL value defined for this domain. The Bind Server will honor that and won't send further queries for the domain until the TTL is expired.<p>
   <img src="../images/hosted_zone_ttls.png">
  </details>
 

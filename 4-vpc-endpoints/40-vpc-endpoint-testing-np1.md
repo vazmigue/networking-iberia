@@ -35,7 +35,7 @@ sh-4.2$
   <b>We are getting a public ip for the KMS service within the NP1 VPC. What's missing?</b></br>
   </summary><p>
 	- You probably got it right. The packet is not being routed to the VPC Endpoint because the DNS query for **kms._your_region_.amazonaws.com** is resolving to the regular KMS public ip. </br> 
-	- How can we fix that? Quite simple, just associate the Private Route53 Hosted Zone with the NP1 VPC as well
+	- How can we fix that? Quite simple, just associate the Route53 Private Hosted Zone with the NP1 VPC as well
 
 1. In the AWS Management Console choose **Services** then select **Route53**.
 

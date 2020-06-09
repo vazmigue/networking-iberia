@@ -7,7 +7,7 @@ What are we going to do? We will create two VPN tunnels from the Transit Gateway
 </p>
 
 
-In a real production environment we would setup a secondary router for redundancy and for additional bandwidth. Each VPN ipsec tunnel provides up to 1.25Gbps. While using multiple ipsec tunnels we can provide additional bandwidth with the use of ECMP (Equal cost multipath), meaning that all the tunnels are equally used. On the AWS side, up to 50 parallel (ECMP) paths are supported. Many vendors support 4-8 ECMP paths, so check with your vendor in advance:
+In a real production environment we would setup a secondary router for redundancy and for additional bandwidth. Each VPN ipsec tunnel provides up to 1.25Gbps. While using multiple ipsec tunnels we can provide additional bandwidth with the use of ECMP (Equal cost multipath), meaning that all the tunnels will be used. On the AWS side, up to 50 parallel (ECMP) paths are supported. Many vendors support 4-8 ECMP paths, so check with your vendor in advance:
 
 1. In the AWS Management Console change to the region you are working in. This is in the upper right hand drop down menu.
 
@@ -68,7 +68,7 @@ _Note: Make sure you put the ip address that lines up with Inside IP CIDR addres
     ./createcsr.sh 35.166.118.167 52.36.14.223 mycsrconfig.txt
     ```
 
-    _Note: AWS generates starter templates to assist with the configuration for you on-premise router. For your real world deployments, you can get a starter template from the console for various device vendors (Cisco, Juniper, Palo Alto, F5, Checkpoint, etc). Word of Caution is to look closely at the routing policy in the BGP section. You may not want to send a default route out. You likely also want to consider using a route filter to prevent certain routes from being propagated to you._
+    _Note: AWS generates starter templates to assist with the configuration for you on-premise router. For your real world deployments, you can get a starter template from the console for various device vendors (Cisco, Juniper, Palo Alto, F5, Checkpoint, etc). Word of caution is to look closely at the routing policy in the BGP section. You may not want to send a default route out. You likely also want to consider using a route filter to prevent certain routes from being propagated to you._
 
 1.  On the left hand panel, the output file **mycsrconfig.txt** should be listed. You may have to open the tgwwalk folder to see the txt file. Open the file with **cat** or any alternative and copy all the file content
 
@@ -121,11 +121,12 @@ _Note: Make sure you put the ip address that lines up with Inside IP CIDR addres
     B        10.17.0.0/16 [20/100] via 169.254.10.1, 09:52:48
     ```
 
-1.  Notice that there is only one next-hop address for each of the VPCs CIDRs, despite having 2 tunnels in place. This is the result of not using ECMP by default. We can fix this by allow ECMP in the Cisco CSR router.
+1.  Notice that there is only one next-hop address for each of the VPCs CIDRs, despite having 2 tunnels in place. This is the result of not using ECMP by default. We can fix this by allowing ECMP in the Cisco CSR router.
     Back in config mode we will set maximum-paths to 8 in our BGP router. Just drop these commands:
 
     ```ip-10-4-0-17# config t
       router bgp 65001
+      address-family ipv4
       maximum-paths 8
       end
     ```

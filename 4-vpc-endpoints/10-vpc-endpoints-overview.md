@@ -16,7 +16,7 @@ See below how the communication towards the KMS service flows from the NP2 VPC *
 
 On the other hand, in this lab we will provision:
 - A KMS VPC Endpoint within the **DCS1 VPC**
-- A Route 53 DNS Internal Zone associated with the NP2 VPC so any DNS query for the KMS service is routed to the VPC Endpoint within the DCS1 VPC
+- A Route 53 Private Hosted Zone associated with the NP2 VPC so any DNS query for the KMS service is routed to the VPC Endpoint within the DCS1 VPC
 
 This would make the traffic flow as follows:
 	![Central VPC Endpoint](../images/kms-endpoint.png)
