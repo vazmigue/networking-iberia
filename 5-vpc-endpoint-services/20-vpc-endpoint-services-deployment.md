@@ -7,7 +7,6 @@ This CloudFormation stack deploys:
 
 1. Click on the CloudFormation Launch link below that corresponds to the AWS Region in which you deployed the first stack.
 
-   [![US East (N. Virginia)](https://samdengler.github.io/cloudformation-launch-stack-button-svg/images/us-east-1.svg)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?stackName=tgw-vpce&templateURL=https://aws-iberia-networking-workshop-virginia.s3.amazonaws.com/6.tgw-privatelink.yaml&param_ParentStack=tgw)
    [![EU West (Ireland)](https://samdengler.github.io/cloudformation-launch-stack-button-svg/images/eu-west-1.svg)](https://console.aws.amazon.com/cloudformation/home?region=eu-west-1#/stacks/create/review?stackName=tgw-vpce&templateURL=https://aws-iberia-networking-workshop.s3-eu-west-1.amazonaws.com/6.tgw-privatelink.yaml&param_ParentStack=tgw)
  
 1. Give the stack a meaningful name or accept the name given. Make sure the Parent Stack name is correct. Leave the "Subnets" section with "Yes". Click **Next**.
