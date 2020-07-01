@@ -78,6 +78,7 @@ Bandwidth scaling and High Availability are built into the Transit Gateway inher
 1.  Once the paste is finished, if you are still at the (config)# or (config-router) prompt, type **end** and press enter.
 
 1.  Now lets look at the new interfaces: **sh ip int br**. You should see new interfaces: Tunnel3 and Tunnel4 and they both should show up. _Note: if they do not change from down to up after a 2 minutes, likely cause is the ip addresses were flipped in the createc2ndsr script._
+
     ![ssh key and ssh to CSR](../images/csr-showtunnelextra.png)
 
 1.  Lets make sure we are seeing the routes on the Cisco CSR. first we can look at what BGP is seeing: **show ip bgp summary**. The most important thing to see is the State/PfxRcd (Prefixes received). If this is in Active or Idle (likely if neighbor statement is wrong: IP address, AS number) there is a configuration issue. What we want to see is a number. In fact if everything is setup correctly we should see 4 for each neighbor:

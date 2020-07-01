@@ -5,7 +5,7 @@ Many customers need their AWS environment to communicate with their on-premise d
 In this lab we will show how to integrate on-premise DNS servers with AWS Route 53 so we can both coexist in armony. In the next section, we will deploy the following resources:
 - Route 53 Inbound Endpoints, as the DNS entry point to AWS
 - Route 53 Outbound Endpoints, as the DNS exit point from AWS
-- 4 Route 53 Private Hosted Zones, one for each domain we want to host in AWS
+- 4 Route 53 Private Hosted Zones, one for each domain we want to host in AWS. 
 - A DNS Bind server within the DataCenter VPC (simulating a real DNS server on-premise)
 - An additional Route 53 Outbound Endpoint for the DataCenter VPC. This shouldn't be needed in a real environment. In this case it's actually needed because the on-premise datacenter is a VPC and we want to capture and forward DNS queries to the Bind Server
 
@@ -23,6 +23,6 @@ For the sake of this lab, we have deployed a Route53 Outbound Endpoint Resolver 
 
 <b>AWS -> On-premise flow diagram</b></br>
 
-On the other hand, if we try to resolve a DNS name not available in the Private Hosted Zones for the VPC, the DNS query gets forwarded outside of the VPC according to the rules present in the Route53 Outbound Endpoint Resolver for the VPC. The rule point to the Bind Server as the resolver
+On the other hand, if we try to resolve a DNS name not available in the Private Hosted Zones for the VPC, the DNS query gets forwarded outside of the VPC according to the rules present in the Route53 Outbound Endpoint Resolver for the VPC. The rules point to the Bind Server as the resolver
 
 ![DNS NP1 to DC](../images/dns-np1todc.png)

@@ -40,9 +40,8 @@ We have partitioned each VPC into multiple subnets. For example, the Production 
 
    ![VPC Route Table](../images/vpc-routetable.png)
 
-details summary::-webkit-details-marker {
-  display:none;
-}
+As a last comment in this section, the "Attachment" subnets are intended to serve as the Transit Gateway attachment subnets. This is a Transit Gateway best practice as it gives you total control about how you route traffic coming from the Transit Gateway within the VPC.
+
 
  <details> 
  <summary><p style="color:blue"><b>Lab #1 - QUESTION 1 </b><i>(Click to see the answer)</i></p>
@@ -104,6 +103,7 @@ Security Groups act as a virtual firewall for your instances to control inbound 
 - Security Groups are associated with your EC2 instance ENIs
 - Security Groups are stateful
 - Security Groups are based on rules and only "allow" communications. As such, you can't deny an specific communication with a security group rule. 
+- Related to the previous item: as you can only "allow" communications, anything else is denied by default
 - There is no order defined for rule evaluation (opposite to the NACL statements, in which they go 1 by 1)
 
    ![VPCs](../images/sgs.png)
@@ -168,7 +168,7 @@ Instances placed within private subnets don't really need any public/elastic ip 
  <summary><p style="color:blue"><b>Lab #1 - QUESTION 4 </b><i>(Click to see the answer)</i></p>
   <b>As part of the CloudFormation deployment, at least one EC2 instance per VPC has been spun up. Let's take a look at all the Elastic and Public ips allocated to our EC2 instances. The easiest way to check that is just placing yourself at the "Network Interfaces" section and scrolling to the right:
   <img src="../images/lab1_question4.png">
-  How many instances hold an elastic/public ip?</b>
+  How many instances hold an elastic/public ip (not taking into account the Cloud9 EC2 instance)?</b>
   </summary><p>
   The answer is none. The only elastic/public ip allocated belongs to a NAT Gateway. And how is that feasible? It turns out that all the instances are located in private subnets so they don't need any public/elastic ip addressing.
  </details>

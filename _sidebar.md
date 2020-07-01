@@ -1,6 +1,5 @@
 - [Prerequisites](0-prerequisites/_index.md)
   - [AWS account access and VPC cleanup](0-prerequisites/100-prereq-1.md)
-  - [Additional AWS account (Optional)](0-prerequisites/110-prereq-2.md)
   - [Cisco CSR Agreement](0-prerequisites/120-prereq-3.md)
 
 - [Introduction](0-introduction/_index.md)

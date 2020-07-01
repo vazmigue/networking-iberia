@@ -12,5 +12,5 @@ In addition, we need a VPC to represent our on-premise environment, a simulated 
 
 ![Speficy Details Screenshot](../images/hybrid-vpcs-diagram.png)
 
-There are lots of choices for VPC and Account Architectures, but they are mostly out-of-scope for this workshop. If you want to know more about multiple VPC architectures, take a look at what Androski Spicer presented at re:Invent 2018 in his [From One to Many: Evolving VPC Design](https://www.youtube.com/watch?v=9Nikqn_02Oc "youtube video").
+There are lots of choices for VPC and cccount crchitectures, but they are mostly out-of-scope for this workshop. If you want to know more about multiple VPC architectures, take a look at what Androski Spicer presented at re:Invent 2018 in his [From One to Many: Evolving VPC Design](https://www.youtube.com/watch?v=9Nikqn_02Oc "youtube video").
 

@@ -3,7 +3,7 @@
 ### Considerations
 
 When building a multi-VPC and/or multi-account architecture, there are several services that we need to consider to provide seamless integration between our AWS environment and the existing infrastrucuture in our datacenter.
-Foundationally we need to provide robust connectivity and routing between the datacenter and all the VPCs but we also need to provide and control routing between those VPCs. For example, we may have a 'Shared Services' VPC that every other VPC needs access to and in which we place common resources that everyone needs, such as a NAT Gateway service to access the internet. At the same time, we don't want just any VPC talking to any other VPC. In particular, we don't want our 'Non-Production' VPCs talking to our 'Production' VPCs.
+We need to provide robust connectivity and routing between the datacenter and all the VPCs but we also need to provide and control routing between those VPCs. For example, we may have a 'Shared Services' VPC that every other VPC needs access to in which we place common resources that everyone needs, such as a NAT Gateway service to access the Internet. At the same time, we don't want just any VPC talking to any other VPC. In particular, we don't want our 'Non-Production' VPCs talking to our 'Production' VPCs.
 
 ### Connectivity
 

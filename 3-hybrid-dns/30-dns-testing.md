@@ -43,15 +43,15 @@
 
 	![DNS DC to DCS](../images/dns_outendpoint_dc.png)
 
-1. Moving on to the configuration in the DNS Bind Server, the CloudFormation template deployed a very simple configuration to just forward "aws.example.com" requests to the DNS Inbound Endpoints in the DataCenter Services VPC. The Bind server is also hosting the zone "example.com" itself. You can check the configuration by logging into the DNS Bind Server using **Systems Manager** and checking the configuration file:
+1. Moving on to the configuration in the DNS Bind Server, the CloudFormation template deployed a very simple configuration to just forward "aws.example.com" requests to the DNS Inbound Endpoints in the DataCenter Services VPC, crossing the VPN connection. The Bind server is also hosting the zone "example.com" itself. You can check the configuration by logging into the DNS Bind Server using **Systems Manager** and checking the configuration file:
 
 	![Bind Server Config](../images/bind_server_config.png)
 
-1. There is an Inbound Endpoint within the DCS VPC to receive requests intended for AWS: 
+1. There is an Inbound Endpoint within the DCS1 VPC to receive requests intended for AWS: 
 
 	![Bind Server Config](../images/inbound_endpoint.png)
 
-1. This endpoint will receive external DNS queries and resolve them based on the Private Hosted Zones attached to the VPC. Following the examble above, the DNS request for "np1.example.com" would be resolved as such (see the VPCs hosting this Private Hosted Zone at the right):
+1. This endpoint, present within the DCS1 VPC, will receive external DNS queries and resolve them based on the Private Hosted Zones associated with the DCS1 VPC. For Route53, the DCS1 VPC is acting as a sort of "transit" VPC. Any Private Hosted Zone associated with this VPC will be visible for the Inbound Endpoint. Note that you don't explicitely need connectivty between the DCS1 VPC and the other VPCs associated with the Route53 Private Hosted Zone. AWS takes care of that behind the scenes. Following the examble above, the DNS request for "np1.example.com" would be resolved as such (see the VPCs associated with this Private Hosted Zone at the right):
 	
 	![Private Hosted Zones](../images/private_hosted_zones.png)
 
@@ -60,7 +60,7 @@
  <summary><p style="color:blue"><b>Lab #3 - QUESTION 1 </b><i>(Click to see the answer)</i></p>
   <b>What would happen if you dissasociate the "np1.aws.example.com" hosted zone with the DCS1 VPC?</b></br>
   </summary><p>
-  The Inbound Endpoint won't be able to resolve "np1.aws.example.com" anymore as this endpoint is located within the DCS1 VPC and we have just removed the association between the Private Hosted Zone and the DCS1 VPC. As a result, we won't be able to resolve the DNS domain from our DataCenter server:<p>
+  The Inbound Endpoint won't be able to resolve "np1.aws.example.com" anymore as this endpoint is located within the DCS1 VPC and we have just removed the association between the NP1 Private Hosted Zone and the DCS1 VPC. As a result, we won't be able to resolve the DNS domain from our DataCenter server:<p>
   <img src="../images/np1_server_fail.png">
  </details>
 
