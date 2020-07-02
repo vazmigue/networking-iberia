@@ -6,7 +6,7 @@
 
 1. In the main pane, click the **Start session** button. Pick The NP2 Instance to shell into. You will now enter a bash shell prompt for that instance.
 
-1. Lets dig "kms._your_region_.amazonaws.com" you should get a response with two 10.0.x.x addresses.
+1. Lets dig "kms._your_region_.amazonaws.com" you should get a response with two 10.0.x.x addresses (make sure you pick the right region).
 
 
 ```
@@ -50,7 +50,7 @@ This is working as expected. Let's take a look at what's going on:
 1. At the left, select **Endpoints** and locate the VPC Endpoint related to KMS
 ![KMS VPC Endpoint](../images/kms_vpc_endpoint.png)
 
-1. At the bottom right, you can see all the DNS alias available for your VPC endpoint. The first one, which is not tied to any Availability Zone, is the one being used by the Route 53 seen before.
+1. At the bottom right, you can see all the DNS alias available for your VPC endpoint. The first one, which is not tied to any Availability Zone, is the one being used by the Route 53 record seen before. The other DNS names refer to the ENIs placed by the VPC Endpoint on each Availability Zone as you might want to use specific Availability Zones for your VPC Endpoints (to avoid inter-AZ traffic)
 
 
 

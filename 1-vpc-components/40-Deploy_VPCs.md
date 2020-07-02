@@ -20,6 +20,7 @@ _Note: if you are sharing the AWS account with someone else be sure to pick diff
 1. If you are sharing the account with someone else doing the workshop, add your initals to the **Stack name**. This will make any IAM roles or other global resources unique.
 
 2. Scroll down to the bottom of the **Review name_of_your_stack** and check the **I acknowledge that AWS CloudFormation might create IAM resources with custom names.** Click the **Create** button in the lower right.
+
    ![Create Stack](../images/createStack-VPCiam.png)
 
 3. Wait for the Stacks to show **Create_Complete**. A couple of stacks will be deployed:

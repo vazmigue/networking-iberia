@@ -33,9 +33,9 @@ In a real production environment we would setup a secondary router for redundanc
 
 1.  While we are on the **Transit Gateway Attachments** page, lets go back to the top and give the VPN attachment a name. Scan down the **Resource type** column for the VPN Attachment. _Note: you may have to hit the refresh icon in the upper right above the table to get the new VPN to show. If you click the pencil that appears when you mouse over the **Name** column, you can enter a name. Be sure to tick the check mark to save the name._
 
-1.  From the Menu on the Left Select **Site-to-Site VPN Connections**. From the main panel, you likely will see the VPN is in State **Pending**. That's fine. Let's take a look towards the bottom, and click the **Tunnel Details** tab. Note down the two **Outside IP Addresses**. We want to record them in the order of the one pairing up with the **Inside IP CIDR** range 169.254.**10**.0/30 first. _Note: You can use Cloud9 as a scratch pad, by clicking the + in the main panel and selecting **New file**. be sure to paste them in the right order!_
+1.  From the Menu on the left select **Site-to-Site VPN Connections**. From the main panel, you likely will see the VPN is in State **Pending**. That's fine. Let's take a look towards the bottom, and click the **Tunnel Details** tab. Note down the two **Outside IP Addresses**. We want to record them in the order of the one pairing up with the **Inside IP CIDR** range 169.254.**10**.0/30 first. _Note: You can use Cloud9 as a scratch pad, by clicking the + in the main panel and selecting **New file**. be sure to paste them in the right order!_
 
-1.  From the menu on the left, scroll down and select **Transit Gateway Attachments**. We need to verify that the attachment we created above is no longer in status **pending**. Instead it should be is state **available** (it might take 4-7 mins) like all of the VPC attachments in the list.
+1.  From the menu on the left, scroll down and select **Transit Gateway Attachments**. We need to verify that the attachment we created above is no longer in status **pending**. Instead it should be in state **available** (it might take 4-7 mins) like all of the VPC attachments in the list.
 
     ![VPN Attachment Available](../images/vpn-available.png)
 
@@ -43,10 +43,10 @@ In a real production environment we would setup a secondary router for redundanc
  Here in the **Green Route Table** there is an association already present: the **Datacenter Services VPC**. We need to create a new association for the VPN attachment previously created. Click **Create associations** in the **Associations** tab. From the drop-down list, select the VPN connection. Click **Create association**. Below is an snapshot displaying the VPN connection being associated:
     ![Associate VPN](../images/tgw-vpnassocationspending_singlevpn.png)
 
-1.  While at the **Transit Gateway Route Tables**, take a look at the **Propagations** tab. These are the attachments that propagate its prefixes into the route table (take it as an import into the route table). An attachment can propagate to multiple route tables. For this lab we want the datacenter addressing (the one reachable via the VPN connections) propagated to all of the route tables so the VPCs associated with each route table can route back to the datacenter. Let’s start with the **Green Route Table**. We can see all of the VPCs are propagating their CIDR to the route table. 
+1.  While at the **Transit Gateway Route Tables**, take a look at the **Propagations** tab. These are the attachments that propagate its prefixes into the route table (take it as an import into the route table). An attachment can propagate to multiple route tables. For this lab we want the datacenter addressing (the one reachable via the VPN connections) propagated to all of the route tables so the VPCs associated with each route table can route back to the datacenter. Let’s start with the **Green Route Table**. We can see all of the VPCs are propagating their CIDR to the route table: 
     ![Associate VPN](../images/tgw_greenrt_propagations.png)
 
-    Click on **Create Propagation** and propagate from the only VPN attachment available (for now).
+    Click on **Create Propagation** and propagate from the only VPN attachment available (for now):
     ![Associate VPN](../images/tgw_greenrt_propagations_done.png)
 
 1.  Repeat the above step on the propagations tab for the **Red Route Table** and the **Blue Route Table**.
@@ -68,7 +68,7 @@ _Note: Make sure you put the ip address that lines up with Inside IP CIDR addres
     ./createcsr.sh 35.166.118.167 52.36.14.223 mycsrconfig.txt
     ```
 
-    _Note: AWS generates starter templates to assist with the configuration for you on-premise router. For your real world deployments, you can get a starter template from the console for various device vendors (Cisco, Juniper, Palo Alto, F5, Checkpoint, etc). Word of caution is to look closely at the routing policy in the BGP section. You may not want to send a default route out. You likely also want to consider using a route filter to prevent certain routes from being propagated to you._
+    _Note: AWS generates starter templates to assist with the configuration for you on-premise router. For your real world deployments, you can get a starter template from the console for various device vendors (Cisco, Juniper, Palo Alto, F5, Checkpoint, etc). You can get those configurations via the "Download configuration" button within the Site-to-Site VPN Connections section explored before
 
 1.  On the left hand panel, the output file **mycsrconfig.txt** should be listed. You may have to open the tgwwalk folder to see the txt file. Open the file with **cat** or any alternative and copy all the file content
 
@@ -82,14 +82,15 @@ _Note: Make sure you put the ip address that lines up with Inside IP CIDR addres
     ip-10-4-0-17(config)#
     ```
 
-1.  Once in Configuration mode _Note: you should see (config)# prompt_, paste all text (ctrl-v on pc/command-v on mac) from the output file created in step 4. This will slowly paste in the configuration.
+1.  Once in Configuration mode _Note: you should see (config)# prompt_, paste all text (ctrl-v on pc/command-v on mac) from the output file created in step 14. This will slowly paste the configuration.
 
-1.  Once the paste is finished, if you are still at the (config)# or (config-router) prompt, type **end** and press enter.
+1.  Once the paste is finished, if you are still at the (config)# or (config-router)# prompt, type **end** and press enter.
 
-1.  Now lets look at the new interfaces: **sh ip int br**. You should see new interfaces: Tunnel1 and Tunnel2. They should be up. _Note: if they do not change from down to up after a minute, likely cause is the ip addresses were flipped in the createcsr script._
+1.  Now lets look at the new interfaces with the command: **sh ip int br**. You should see new interfaces: Tunnel1 and Tunnel2. They should be up. _Note: if they do not change from down to up after a minute, likely cause is the ip addresses were flipped in the createcsr script._
+    
     ![ssh key and ssh to CSR](../images/csr-showtunnel.png)
 
-1.  Lets make sure we are seeing the routes on the Cisco CSR. first we can look at what BGP is seeing: **show ip bgp summary**. The most important thing to see is the State/PfxRcd (Prefixes received). If this is in Active or Idle (likely if neighbor statement is wrong: IP address, AS number) there is a configuration issue. What we want to see is a number. In fact if everything is setup correctly we should see 4 for each neighbor:
+1.  Lets make sure we are seeing the routes on the Cisco CSR. first we can look at what BGP is seeing: **show ip bgp summary**. The most important thing to see is the State/PfxRcd (Prefixes received). If this is in Active or Idle (likely a neighbor statement is wrong: IP address, AS number) there is a configuration issue. What we want to see is a number. In fact if everything is setup correctly we should see 4 for each neighbor:
 
     ```
     ip-10-4-0-17#sh ip bgp summ

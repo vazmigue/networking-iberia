@@ -7,6 +7,7 @@
   - [Overview](0-introduction/40-intro.md)
   - [VPC Layout](0-introduction/50-vpclayout.md)
   - [IP Addressing](0-introduction/60-ipaddressing.md)
+  - [(OPTIONAL) Lab inter-dependency](0-introduction/70-lab-inter-dependency.md)
 
 - Lab #1 - VPC Components Deep dive 
   - [Create KeyPair](1-vpc-components/20-KeyPair.md)

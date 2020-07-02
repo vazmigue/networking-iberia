@@ -13,6 +13,7 @@ This CloudFormation stack deploys:
 1. Give the stack a meaningful name or accept the name given. Make sure the Parent Stack name is correct. Leave the "Subnets" section with "Yes". Click **Next**.
 
 1. Scroll down to the bottom of the **Review name_of_your_stack** and check the **I acknowledge that AWS CloudFormation might create IAM resources with custom names.** Click the **Create** button in the lower right.
+   
    ![Create Stack](../images/createStack-VPCiam.png)
 
 1. Wait for the Stack to show **Create_Complete**

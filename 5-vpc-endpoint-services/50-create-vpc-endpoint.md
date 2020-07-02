@@ -34,7 +34,7 @@ Let's now create a VPC Endpoint within the **NP1 VPC** so we can consume the End
 
 **Create a familiar DNS name in Route53 for the Endpoint**
 
-Several DNS names will be created for the **Endpoint**. They will start with **vpce** and end with **amazonaws.com**. The first one listed under **DNS Names** in the Details tab will return an Interface IP address for each Availability Zone that is active. The other names will be availability zone specific and include the availability zone in the name, such as us-west-2**a** or us-west-2**b**. These only return 1 IP address for that Availability Zone.
+Several DNS names will be created for the **Endpoint**. They will start with **vpce** and end with **amazonaws.com**. The first one listed under **DNS Names** in the Details tab will return an Interface IP address for each Availability Zone that is active. The other names will be Availability Zone specific and include the Availability Zone in the name, such as us-west-2**a** or us-west-2**b**. These only return 1 IP address for that Availability Zone.
 
 Lets create a more friendly name:
 

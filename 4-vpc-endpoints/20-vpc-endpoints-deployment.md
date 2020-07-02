@@ -11,6 +11,7 @@ This CloudFormation stack deploys a KMS VPC endpoint within the **DCS1** VPC as 
    ![Stack Parameters](../images/createStack-DNSparameters.png)
 
 1. Scroll down to the bottom of the **Review name_of_your_stack** and check the **I acknowledge that AWS CloudFormation might create IAM resources with custom names.** Click the **Create** button in the lower right.
+  
    ![Create Stack](../images/createStack-VPCiam.png)
 
 1. Wait for the Stack to show **Create_Complete**

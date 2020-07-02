@@ -10,7 +10,7 @@ As the Service Provider, you want to enable your NLB to be shared with other VPC
 
 1. On the **Create Endpoint Service** page select your load balancer for **Associate Network Load Balancers**
 
-1. You will see the included Availablity Zones listed out. If you selected All-AZs from the Cloudformation template, all AZs for the region should be listed, as the NLB was deployed in a new set of subnets.
+1. You will see the included Availablity Zones listed out. If you selected All-AZs from the Cloudformation template, all AZs for the region should be listed.
 
 1. Uncheck the **Require acceptance for Enpoint**. *Note: other AWS accounts still won't be able to connect to your Endpoint Service. Only VPCs in your AWS account have access until you add AWS Account numbers to a whitelist.*
 

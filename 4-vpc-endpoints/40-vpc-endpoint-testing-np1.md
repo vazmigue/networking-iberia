@@ -2,9 +2,10 @@
 
 The NP1 VPC resources also want to benefit from the VPC Endpoint. However, see what happens whenever you try to resolve the KMS DNS name from the NP1 VPC:
 
-1. Use **Session Manager** again and shell into NP1. Use dig to lookup kms._your_region_.amazonaws.com.
+1. Use **Session Manager** again and shell into NP1. Use dig to lookup kms._your_region_.amazonaws.com (make sure you pick the right region)
 
 ```
+sh-4.2$ dig kms.us-east-2.amazonaws.com
 
 ; <<>> DiG 9.9.4-RedHat-9.9.4-61.amzn2.1.1 <<>> kms.us-east-2.amazonaws.com
 ;; global options: +cmd
@@ -47,7 +48,7 @@ sh-4.2$
 
 	![KMS Associate new VPC](../images/associate_new_VPC_KMS.png)
 
-1. Now repeat the test from the NP1 instance
+1. Now repeat the test from the NP1 instance (note the change might take a couple of minutes to propagate)
 
 ```
 sh-4.2$ dig kms.us-east-2.amazonaws.com

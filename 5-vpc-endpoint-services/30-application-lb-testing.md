@@ -6,7 +6,7 @@
 
 1. From the menu on the left, scroll down and select **Session Manager**. Session Manager allows us to use IAM role and policies to determine who has console access without having to manage ssh keys for our instances.
 
-1. In the main pane, click the **Start session** button. Pick The NP2 Instance to shell into. You will now enter a bash shell prompt for that instance.
+1. In the main pane, click the **Start session** button. Pick The NP2 Instance to shell into (do not pick the NP2 WebServer instance, just pick the regular NP2 instance you used before). You will now enter a bash shell prompt for that instance.
 
 1. Try to curl web.np2.aws._your_domain_name_. You should get a response from one of the two instances in the Load Balancer Autoscaling Group which is in the Target Group:
 
@@ -51,7 +51,7 @@ web.np2.aws.example.com. 60     IN      A       100.64.3.143
 ```
 
 
-- On the other hand, whenever you provision a new VPC CIDR, you split it into different subnets (as you would do whenever you create a VPC). By default, these subnets are able to route traffic to any other VPC CIDR:
+- On the other hand, whenever you provision a new VPC CIDR, you split it into different subnets (as you would do whenever you create a VPC). By default, these subnets are able to route traffic to any other CIDR within the VPC:
 ![Curl web.np2.aws...](../images/nlb_subnet_traffic.png)
 
 

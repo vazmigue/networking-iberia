@@ -23,6 +23,6 @@ For the sake of this lab, we have deployed a Route53 Outbound Endpoint Resolver 
 
 <b>AWS -> On-premise flow diagram</b></br>
 
-On the other hand, if we try to resolve a DNS name not available in the Private Hosted Zones for the VPC, the DNS query gets forwarded outside of the VPC according to the rules present in the Route53 Outbound Endpoint Resolver for the VPC. The rules point to the Bind Server as the resolver
+On the other hand, if we try to resolve a DNS name not available in the Private Hosted Zones for the VPC, the DNS query gets forwarded outside of the VPC according to the rules present in the Route53 Outbound Endpoint Resolver for the VPC. The rules point to the on-premise DNS Bind Server as the resolver
 
 ![DNS NP1 to DC](../images/dns-np1todc.png)

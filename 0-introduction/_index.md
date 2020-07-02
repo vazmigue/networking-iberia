@@ -6,3 +6,4 @@ This section covers the following topics:
 * Overview of the network connectivity
 * VPC layout map
 * IP addressing
+* (OPTIONAL Read) Lab inter-Dependency

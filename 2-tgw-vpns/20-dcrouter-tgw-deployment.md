@@ -12,11 +12,13 @@ In addition, a Transit Gateway will be deployed with a couple of Transit Gateway
  
 
 2. For the **ParentStack** name, make sure you use the stack name created during the previous lab (must be entered exactly to work). Select the Key Pair created before and also stick with "Cisco" as the router vendor. Click **Next**.
+   
    ![Stack Parameters](../images/createStack-CSRparameters.png)
 
 3. For **Configuration stack options** we don't need to change anything, so just click **Next** in the bottom right.
 
 4. Scroll down to the bottom of the **Review name_of_your_stack** and check the **I acknowledge the AWS CloudFormation might create IAM resources with custom names.** Click the **Create** button in the lower right.
+  
    ![Create Stack](../images/createStack-VPCiam.png)
 
 5. Wait for the Stack to show **Create_Complete**.

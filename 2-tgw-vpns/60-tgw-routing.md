@@ -13,9 +13,9 @@ While the CloudFormation Template created attachments to the VPCs and route tabl
 
 1. In the AWS Management Console choose **Services** then select **VPC**.
 
-1. From the menu on the left, Scroll down and select **Route Tables**.
+1. From the menu on the left, scroll down and select **Route Tables**.
 
-1. You will see the Route Tables listed in the main pane. Lets Start with **NP1-_stackname-Private** route table. Let take a look toward the bottom of the panel and click the Routes tab. Currently, there is just one route, the local VPC route. Since the only way out is going to be the Transit Gateway, lets make our life simple and point a default route to the Transit Gateway. Click the **Edit Routes** in the Routes tab.
+1. You will see the Route Tables listed in the main pane. Lets Start with **NP1-_stackname-Private** route table. Let take a look towards the bottom of the panel and click the Routes tab. Currently, there is just one route, the local VPC route. Since the only way out is going to be the Transit Gateway, lets make our life simple and point a default route to the Transit Gateway. Click the **Edit Routes** in the Routes tab.
 
 1. On the Edit routes page, click the **Add route** button and enter a default route by setting the destination to 0.0.0.0/0. In the Target drop-down, select **Transit Gateway** and pick your Transit Gateway created for this project. It should be the only one. 
    ![Stack Complete](../images/vpc-defaultroute.png)
@@ -24,7 +24,7 @@ While the CloudFormation Template created attachments to the VPCs and route tabl
    - NP2-_stack_name_-Private
    - P1-_stack_name_-Private
 
-1. For the **DCS1-_stackname-Public** and **DCS1-_stackname-Private** where our NAT Gateway is, we need a special route. We already have a default route pointed to the Internet Gateway(IGW) for the public and to the Nat Gateway(NGW) for the private to get to the Internet, so we need another entry to route internally. Let’s use the rfc 1918 10.0.0.0/8 CIDR as that can only be internal and allows for future expansion without changes. The other VPC ranges 10.X.0.0/16 won’t match the Local Route already present in the Route Table (10.0.0.0/16 -> Local). So just add **10.0.0.0/8** pointing to the Transit Gateway. Follow the same steps as before for both Route tables. Be sure not to alter the 0.0.0.0/0 route.
+1. For the **DCS1-_stackname-Public** and **DCS1-_stackname-Private** where our NAT Gateway is, we need a special route. We already have a default route pointed to the Internet Gateway(IGW) for the public and to the NAT Gateway(NGW) for the private to get to the Internet, so we need another entry to route internally. Let’s use the RFC1918 10.0.0.0/8 CIDR as that can only be internal and allows for future expansion without changes. The other VPC ranges 10.X.0.0/16 won’t match the Local Route already present in the Route Table (10.0.0.0/16 -> Local). So just add **10.0.0.0/8** pointing to the Transit Gateway. Follow the same steps as before for both Route tables (Private/Public). Be sure not to alter the 0.0.0.0/0 route.
 
 1. Because the CloudFormation template already created a Security Group to allow ICMP traffic from 10.0.0.0/8, we should now be able to test pings from lots of places.
 
@@ -64,10 +64,10 @@ PING 10.16.22.100 (10.16.22.100) 56(84) bytes of data.
 rtt min/avg/max/mdev = 0.673/0.824/1.096/0.130 ms
 ```
 
-      Troubleshooting: if you are unable to ping a server here are a few things to check:
-      - Go to the EC2 service and double-check the private IP address of the device you want to ping to
-      - Go to the VPC service and verify that you have the 0.0.0.0/0 route pointing to the TGW for VPCs NP1,NP2, and P1. Verify that you have the 10.0.0.0/8 route in the DCS VPC for both public and private subnets while you are here.
-      - Finally, Verify that you went through the check for the TGW route tables propagation and the CSR is receiving routes (see the **Setup VPN Between Datacenter and Transit Gateway** section above)
+Troubleshooting: if you are unable to ping a server here are a few things to check:
+- Go to the EC2 service and double-check the private IP address of the device you want to ping to
+- Go to the VPC service and verify that you have the 0.0.0.0/0 route pointing to the TGW for VPCs NP1,NP2, and P1. Verify that you have the 10.0.0.0/8 route in the DCS VPC for both public and private subnets while you are there.
+- Finally, verify that you went through the check for the TGW route tables propagation and the CSR is receiving routes (see the **Setup VPN Between Datacenter and Transit Gateway** section above)
 
 
 
@@ -89,7 +89,7 @@ Feel free to scroll up to see the diagram
   <b>At the time of coming back, do you think the packet will land again in the Red Route Table (as it did with the NP1 to NP2 traffic flow)?</b></br>
   </summary><p>
   The answer is no.
-  The return packet will leave the DCS instance and route through the TGW landing in the **Green Route Table**. A new ip lookup will take place and the packet will be forward to the NP1 VPC via the attachment. 
+  The return packet will leave the DCS instance and route through the TGW landing in the **Green Route Table**. A new ip lookup will take place and the packet will be forwarded to the NP1 VPC via the attachment. 
  </br>   
  </details>
 
@@ -127,7 +127,7 @@ Let's fix the problem by using BlackHole Routes. We will explain how to add them
 
 1. In the AWS Management Console choose **Services** then select **VPC**.
 
-1. From the menu on the left, Scroll down and select **Transit Gateway Routes Tables**.
+1. From the menu on the left, scroll down and select **Transit Gateway Routes Tables**.
 
 1. From the table in the main panel select **Blue Route Table**. Let's take a look towards the bottom, and click the **Routes** tab.
 
