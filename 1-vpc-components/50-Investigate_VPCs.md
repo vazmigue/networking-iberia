@@ -127,8 +127,8 @@ Internet Gateways are used along with "public subnets" to route traffic outside 
  <details>
  <summary><p style="color:blue"><b>Lab #1 - QUESTION 3 </b><i>(Click to see the answer)</i></p>
   <b>Locate the instance launched within the DCS1 VPC. Is this instance located in a Public Subnet and hence will be able to send traffic to the Internet?</b></br>
-  a) No, the instance is located in a Private Subnet as there is no entry pointing towards an Internet Gateway in the routing table. However, there is a default route 0.0.0.0 pointing to a NAT Gateway</br>
-  b) Yes, the instance is located in a Public Subnet as there is a defualt route 0.0.0.0 in the routing table </br>
+  a) No, the instance is located in a Private Subnet as there is no entry pointing towards an Internet Gateway in the routing table. However, there is a default route 0.0.0.0 pointing to a NAT Gateway so it will be able to send traffic out to the internet</br>
+  b) Yes, the instance is located in a Public Subnet as there is a default route 0.0.0.0 in the routing table </br>
   </summary><p>
   The correct answer is a)<p>
   Navigate to the EC2 instance and look for its subnet:<p>
