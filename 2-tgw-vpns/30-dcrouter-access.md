@@ -32,7 +32,7 @@ In order to access Cloud9, follow this simple steps:
 
 1. From another browser tab, navigate again to the Management Console and choose **Services** then select **CloudFormation**.
 
-1. From the left-hand menu, select **Exports** in the left hand menu and find the export for ssh to the CSR: DC1-_stack-name_-CSRssh and copy the **Export value**
+1. From the left-hand menu, select **Exports** in the left hand menu and type **ssh** into the 'Filter exports' box. You will see the Export name: DC1-_stack-name_-CSRssh and should copy the **Export value**
    ![ssh key and ssh to CSR](../images/cloudformation-csrssh.png)
 
 1. Back on the **Cloud9** Browser tab paste this into the bash shell. _Note: in the command you will notice the -i reference to the pem file you just copied, this is the private half of the key pair. The public key is already placed on the Cisco CSR_. Answer **yes** to **Are you sure you want to continue connecting (yes/no)?**
