@@ -18,7 +18,7 @@ Let's take some time to investigate each VPC component that we have deployed and
    - NP1-_your_stack_name_ (This is our Non-Production VPC number 1, a.k.a Development VPC)
    - NP2-_your_stack_name_ (This is our Non-Production VPC number 2, a.k.a Test VPC)
    - DCS1-_your_stack_name_ (This is our Shared Services VPC)
-   - DS1-_your_stack_name_ (This is our Datacenter On-premise VPC)
+   - DC1-_your_stack_name_ (This is our Datacenter On-premise VPC)
 
    ![VPCs](../images/vpc-yourvpcs.png)
 
