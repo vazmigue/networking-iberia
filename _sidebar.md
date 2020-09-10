@@ -50,6 +50,9 @@
   - [Final Testing](6-vpc-peering/40-final-testing.md)
 
 - Lab #7 - Transit Gateway Network Manager
-  - [Network Manager Overview](7-network-manager/20-Network-Manager-Overview.md)
-  - [Network Manager Setup](2-tgw-vpns/30-Network-Manager-Setup.md)
-
+  - [Overview](7-network-manager/20-Network-Manager-Overview.md)
+  - [Setup](2-tgw-vpns/30-Network-Manager-Setup.md)
+  - [Site Configuration](2-tgw-vpns/40-Network-Manager-Site-Configuration.md)
+  - [Network insights](2-tgw-vpns/50-Network-Manager.md)
+  - [Route Analyzer](2-tgw-vpns/60-Network-Manager-Route-Analyzer.md)
+  - [Troubleshooting](2-tgw-vpns/70-Network-Manager-Troubleshooting.md)
