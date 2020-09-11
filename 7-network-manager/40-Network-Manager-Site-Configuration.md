@@ -1,10 +1,10 @@
 # Network Manager Site configuration
 
-To help build a graphical picture of your global infrastructure we need to supply network manager with some additional details about your on-premesis infrastructure. In this section we will create the following resources:
+To help build a graphical picture of your global infrastructure we need to supply network manager with some additional details about the on-premises infrastructure. In this section we will create the following resources:
 
-- Site - This contains information about the physical sites we are connecting into AWS.
-- Link - This contains details a bout the link capabilites we are using to connect to AWS.
-- Devices - This stores details about the devices we are using to terminate our network connections to AWS.
+- Site - This contains information about the physical sites we are connecting into AWS, for example datacentre details.
+- Link - This contains details about the link capabilities we are using to connect to AWS, e.g. link speed and provider name.
+- Devices - This stores details about the devices we are using to terminate our network connections from AWS into our on-premises facilities.
 
 ### Create a Site
 
@@ -21,30 +21,39 @@ To help build a graphical picture of your global infrastructure we need to suppl
 6. Click **Sites** in the left-hand menu under *On-Premises*.
 
 7. Click **Create Site** in top right and enter the following details:
+
+```
    Name: On-premises-DC-A
    Description: Somerset datacentre
    Address: Somerset
    Latitude: 51.310395
    Longitude: -2.687092
+```
 
    Click **Create Site**
+
    ![Site Setup](../images/site_setup.png)
 
 8. Click into the newly created site and click on the *Links* tab.
 
 9. Click **Create Link** and add the following details:
+
+```
    Name: On-premises-DC-A-Internet
    Description: Somerset datacentre internet link
    Upload speed (Mbps): 1000
    Download speed (Mbps): 1000
    Provider: Awesome-ISP
    Type: Broadband
-   
+   ```
+
    Click **Create Link**
 
 10. Click **Devices** in the left-hand menu under *On-Premises*.
 
 11. Click **Create device** in top right and enter the following details:
+
+```
    Name: Edge-Router-A
    Description: Edge router-A Somerset
    Model: CSR1000V
@@ -54,6 +63,7 @@ To help build a graphical picture of your global infrastructure we need to suppl
    Address: Somerset
    Latitude: 51.310395
    Longitude: -2.687092
+```
 
    Click **Create device**
 
