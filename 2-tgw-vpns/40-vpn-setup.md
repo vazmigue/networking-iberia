@@ -54,22 +54,21 @@ In a real production environment we would setup a secondary router for redundanc
 1.  Take a look at each of the route tables and notice the tab **Routes**. You can see the routes that are propagated, as well as a static route table that was created for you by the CloudFormation template. That's the default route (0.0.0.0/0) that will direct traffic destined for the Internet to the **Datacenter Services VPC** and ultimately through the NAT Gateway in that VPC. _Note: there is also a route table with no name. This is the default route table. In this lab we do not intend to use it_.
 
 1.  Now it's time to get the other end ready and apply the configuration to the Cisco router so we can bring the VPN tunnels up. We will carry out this action generating the Cisco configuration file. In order to do that, go back to the Cloud9 browser tab. Using the two VPN public tunnel endpoints ips generated from the step above, cd to tgwwalk on the Cloud9 bash console and run the bash script appending the 2 ips and the name of the configuration file:
-  ```
- ./createcsr.sh publicip1 publicip2 mycsrconfig.txt
- ```
-_Note: The file 'myscrconfig.txt' is created to capture the output of the 'createcsr.sh' script and does not already exist in the repository._
-_Note: Make sure you put the ip address that lines up with Inside IP CIDR address 169.254.10.0/30 for ip1. This will result in a Cisco configuration file ready to be used_
 
-    Example from my Site-to-Site VPN, note your public ips will be different:
+  ```
+   ./createcsr.sh publicip1 publicip2 mycsrconfig.txt
+  ```
+  _Note: The file 'myscrconfig.txt' is created to capture the output of the 'createcsr.sh' script and does not already exist in the repository. Make sure you put the ip address that lines up with Inside IP CIDR address 169.254.10.0/30 for ip1. This will result in a Cisco configuration file ready to be used_
+
+  Example from my Site-to-Site VPN, note your public ips will be different:
     ![VPN tunnel Addresses](../images/vpn-tunneladdresses.png)
 
-    ```
-    cd tgwwalk
-    ##./createcsr.sh ip1 ip2 outputfile
-    ./createcsr.sh 35.166.118.167 52.36.14.223 mycsrconfig.txt
-    ```
-
-_Note: AWS generates starter templates to assist with the configuration for you on-premise router. For your real world deployments, you can get a starter template from the console for various device vendors (Cisco, Juniper, Palo Alto, F5, Checkpoint, etc). You can get those configurations via the "Download configuration" button within the Site-to-Site VPN Connections section explored before
+  ```
+  cd tgwwalk
+  ##./createcsr.sh ip1 ip2 outputfile
+  ./createcsr.sh 35.166.118.167 52.36.14.223 mycsrconfig.txt
+  ```
+  _Note: AWS generates starter templates to assist with the configuration for you on-premise router. For your real world deployments, you can get a starter template from the console for various device vendors (Cisco, Juniper, Palo Alto, F5, Checkpoint, etc). You can get those configurations via the "Download configuration" button within the Site-to-Site VPN Connections section explored before_
 
 1.  On the left hand panel, the output file **mycsrconfig.txt** should be listed. You may have to open the tgwwalk folder to see the txt file. Open the file with **cat** or any alternative and copy all the file content
 
