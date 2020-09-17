@@ -49,6 +49,10 @@
   - [Routing Configuration](6-vpc-peering/30-routing-configuration.md)
   - [Final Testing](6-vpc-peering/40-final-testing.md)
 
-
-  
-
+- Lab #7 - Transit Gateway Network Manager
+  - [Overview](7-network-manager/20-Network-Manager-Overview.md)
+  - [Setup](7-network-manager/30-Network-Manager-Setup.md)
+  - [Site Configuration](7-network-manager/40-Network-Manager-Site-Configuration.md)
+  - [Network insights](7-network-manager/50-Network-Manager.md)
+  - [Route Analyzer](7-network-manager/60-Network-Manager-Route-Analyzer.md)
+  - [Troubleshooting](7-network-manager/70-Network-Manager-Troubleshooting.md)

@@ -28,3 +28,6 @@ Requires lab #3 deployment
 Requires lab #1 deployment and completion</br>
 Requires lab #2 deployment and completion
 
+**Lab #7** </br>
+Requires lab #1 deployment and completion</br>
+Requires lab #2 deployment and completion
