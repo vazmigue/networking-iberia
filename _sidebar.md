@@ -53,6 +53,6 @@
   - [Overview](7-network-manager/20-Network-Manager-Overview.md)
   - [Setup](7-network-manager/30-Network-Manager-Setup.md)
   - [Site Configuration](7-network-manager/40-Network-Manager-Site-Configuration.md)
-  - [Network insights](7-network-manager/50-Network-Manager.md)
+  - [Network Insights](7-network-manager/50-Network-Manager.md)
   - [Route Analyzer](7-network-manager/60-Network-Manager-Route-Analyzer.md)
   - [Troubleshooting](7-network-manager/70-Network-Manager-Troubleshooting.md)

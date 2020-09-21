@@ -1,5 +1,7 @@
 # Network Manager Setup
 
+We will first create a Global Network, which acts as a container for all the objects within your network (Transit Gateways, Sites, Devices, etc). Some of these objects already exist (Transit Gateway) whereas other objets will be created in the next section of the lab (Sites, Devices...)
+
 ### Create a Global Network
 
 1. In the AWS Management Console change to the region you are working in. This is in the upper right hand drop down menu.
@@ -19,6 +21,7 @@
     ![Available Global Network](../images/available_global_network.png)
 
 8. Click into the global network and click **Register Transit Gateway**.
+	![Register Transit Gateway](../images/network-manager-tgw-association.png)
 
 9. Put a check next to the Transit Gateway with the name *tgw* and click **Register Transit Gateway**.
 
@@ -28,6 +31,8 @@
 11. From the left-hand menu click **Dashboard**.
      Here you will be able to see high level statistics related to your network. For example, in our case the VPN status is showing as *100%*.
 
-12. The final setup step is to integrate the network manager with our global network. Under *Network events summary* click **Onboard cloudwatch log insight**. After a few seconds you will be presented with a blank dashboard as there have not been any network events raised yet.
+12. The final setup step is to integrate the Network Manager with our global network. Under *Network events summary* click **Onboard cloudwatch log insight**. After a few seconds you will be presented with a blank dashboard as there have not been any network events raised yet.
+	![Network Events Dashboard](../images/network_events_dashboard.png)
 
-This concludes the initial setup of the network manager. In the next section we will add in our on-premises site details and walk through the console to understand what information is available to us. 
+
+This concludes the initial setup of the Network Manager. In the next section we will add in our on-premises site details and walk through the console to understand what information is available to us. 
