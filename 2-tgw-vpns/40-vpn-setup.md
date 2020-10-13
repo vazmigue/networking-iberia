@@ -17,11 +17,12 @@ In a real production environment we would setup a secondary router for redundanc
 
 1. You will see the VPC Attachments listed, but we want to add one to connect our Datacenter VPC. Click the **Create Transit Gateway Attachment** button above the list.
 
-1. Fill out the **Create Transit Gateway Attachment** form. Exactly as below: (_Note: these choices will match our config of the router on the other side of the VPN tunnels_)
+1. Fill out the **Create Transit Gateway Attachment** form as below: (_Note: these choices will match our config of the router on the other side of the VPN tunnels_)
 
   - **Transit Gateway ID** refers to the Transit Gateway device already provisioned by the Cloudformation template
   - **Attachment Type** is **VPN**
   - **Customer Gateway** (CGW) will be **Existing**. _Note: the CloudFormation template created the CGW. This is the IP address of our Datacenter VPN device and it matches the Elastic IP of the EC2 instance running the Cisco CSR._
+  - **Customer Gateway ID** (CGW) will be the available CGW ID in the drop down. This was created when we deployed the stack.
   - Leave **Routing options** set to **Dynamic(requires BGP)**. _Note: BGP is required if you want traffic to balance across more than one VPN tunnel at a time (ECMP or Equal Cost Multipathing)_
    - Do not tick Enable Acceleration as we won't be using it for this lab. However, for production environments GA delivers an enhanced VPN experience thanks to the use of anycast endpoints being advertised from our global network of points of presence (POPs) 
   - For **Inside IP CIDR for Tunnel 1** use **169.254.10.0/30** for CIDR.
