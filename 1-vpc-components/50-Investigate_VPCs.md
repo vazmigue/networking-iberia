@@ -77,7 +77,7 @@ As a last comment in this section, the "Attachment" subnets are intended to serv
 ## Elastic Network Interfaces (ENIs)
 
 ENIs are widely used across many AWS resources, including EC2 instances. An ENI is a way to position a resource within a VPC, meaning reserving an ip for that resource to communicate within the VPC.  As part of this deployment, CloudFormation has created several EC2 instances for us. Each of these EC2 instances will have one or more ENIs (depending on the size of the instance) within the subnet (VPC) they landed on.</br>
-Navigate to the EC2 section of the console (browsing through Services -> EC2 at the top left) and locate the DC1 server. You can see how the server interface "eth0" is mapped to an ENI:
+Navigate to the EC2 section of the console (browsing through Services -> EC2 at the top left) and locate the DC1 server. Put a check in the box next to the server. In the informal page underneath you can see the subnet the server has been deployed toi. If you click on the **Networking** tab you will be able to see the network interface details:
 
    ![VPCs](../images/enis.png)
 
