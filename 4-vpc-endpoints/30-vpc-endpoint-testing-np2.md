@@ -8,33 +8,31 @@
 
 1. Lets dig "kms._your_region_.amazonaws.com" you should get a response with two 10.0.x.x addresses (make sure you pick the right region).
 
+	```
+	sh-4.2$ dig kms.us-east-2.amazonaws.com
 
-```
+	; <<>> DiG 9.9.4-RedHat-9.9.4-61.amzn2.1.1 <<>> kms.us-east-2.amazonaws.com
+	;; global options: +cmd
+	;; Got answer:
+	;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 37063
+	;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
 
-sh-4.2$ dig kms.us-east-2.amazonaws.com
+	;; OPT PSEUDOSECTION:
+	; EDNS: version: 0, flags:; udp: 4096
+	;; QUESTION SECTION:
+	;kms.us-east-2.amazonaws.com.   IN      A
 
-; <<>> DiG 9.9.4-RedHat-9.9.4-61.amzn2.1.1 <<>> kms.us-east-2.amazonaws.com
-;; global options: +cmd
-;; Got answer:
-;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 37063
-;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+	;; ANSWER SECTION:
+	kms.us-east-2.amazonaws.com. 60 IN      A       10.0.20.149
+	kms.us-east-2.amazonaws.com. 60 IN      A       10.0.13.161
 
-;; OPT PSEUDOSECTION:
-; EDNS: version: 0, flags:; udp: 4096
-;; QUESTION SECTION:
-;kms.us-east-2.amazonaws.com.   IN      A
+	;; Query time: 3 msec
+	;; SERVER: 10.17.0.2#53(10.17.0.2)
+	;; WHEN: Thu Mar 14 11:26:44 UTC 2019
+	;; MSG SIZE  rcvd: 88
+	```
 
-;; ANSWER SECTION:
-kms.us-east-2.amazonaws.com. 60 IN      A       10.0.20.149
-kms.us-east-2.amazonaws.com. 60 IN      A       10.0.13.161
-
-;; Query time: 3 msec
-;; SERVER: 10.17.0.2#53(10.17.0.2)
-;; WHEN: Thu Mar 14 11:26:44 UTC 2019
-;; MSG SIZE  rcvd: 88
-```
-
-This is working as expected. Let's take a look at what's going on:
+1. This is working as expected. Let's take a look at what's going on...
 
 1. In the AWS Management Console choose **Services** then select **Route 53**.
 

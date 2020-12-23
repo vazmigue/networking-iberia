@@ -24,15 +24,15 @@ We are going to disable one of the VPN tunnels. We'll do this by changing the Pr
 
 ### Investigating the failure
 
-6. Click on the **Geographic** tab and you will notice that the VPN state is now orange and showing as impaired.
+1. Click on the **Geographic** tab and you will notice that the VPN state is now orange and showing as impaired.
 
    ![VPN Geo tunnel impaired](../images/network-manager-impaired-tunnel-geo.png)
 
-7. Click on the **Topology** tab and you will notice that the VPN state is also showing as impaired but this time with more information on which path on which tunnel is broken. You can then click on the VPN connection to get a link directly to the configuration parameters for the tunnels.
+1. Click on the **Topology** tab and you will notice that the VPN state is also showing as impaired but this time with more information on which path on which tunnel is broken. You can then click on the VPN connection to get a link directly to the configuration parameters for the tunnels.
 
    ![VPN Topology tunnel impaired](../images/network-manager-impaired-tunnel-topology.png)
 
-8. Click on the **Events** tab and you'll be able to see the event that was generated when we made the change to the tunnel.
+1. Click on the **Events** tab and you'll be able to see the event that was generated when we made the change to the tunnel.
 
    ![VPN Topology tunnel event](../images/network-manager-impaired-tunnel-event.png)
 
